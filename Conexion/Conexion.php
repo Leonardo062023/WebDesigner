@@ -27,22 +27,13 @@ class ConexionPDO
 			$this->obj_resu = new PDO('mysql:host='.$this->db_serv.';dbname='.$this->db_nomb.';', $this->db_usua, $this->db_clav, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")); 
 			$this->obj_resu->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);      
 			// $this->obj_resu->exec("SET NAMES utf8 ");
-			// Verifica el estado de la conexión
-            if ($this->obj_resu) {
-                echo "Conexión exitosa";
-            } else {
-                echo "Error de conexión: " . $this->obj_resu;
-                die();
-            }
 		}
 		catch(Exception $e)
 		{
 			$this->obj_resu = $e->getMessage();
 			die($e->getMessage());
 		}
-		
 		return $this->obj_resu;
-
 	}
 	/**********************************************
 	 METODO DE LISTAR
